@@ -25,7 +25,7 @@ describe Pizza do
     end
   end
 
-  decribe ".vegetarian?" do
+  describe ".vegetarian?" do
     let(:toppings){[
         Topping.new("mushrooms", vegetarian: true),
         Topping.new("pepperoni")
@@ -34,6 +34,20 @@ describe Pizza do
     it "checks to see that all the toppings are vegetarian" do
 
       expect(pizza.vegetarian?).to eq(false)
+    end
+  end
+
+  describe "add_topping" do
+    let(:toppings){[
+        Topping.new("mushrooms", vegetarian: true),
+        Topping.new("pepperoni")
+    ]}
+    let(:pizza){Pizza.new(toppings)}
+    it "accepts a topping and adds it to @toppings array" do
+      new_topping = Topping.new("onions", vegetarian: true)
+      pizza.add_topping(new_topping)
+
+      expect(pizza.toppings.count).to eq(3)
     end
   end
 
