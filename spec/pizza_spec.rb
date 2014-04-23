@@ -47,6 +47,7 @@ describe Pizza do
       new_topping = Topping.new("onions", vegetarian: true)
       pizza.add_topping(new_topping)
 
+      expect(pizza.toppings.last).to eq(new_topping)
       expect(pizza.toppings.count).to eq(3)
     end
   end
